@@ -7,9 +7,6 @@ from pydantic import BaseModel, EmailStr, ConfigDict, Field
 from .models import RoleEnum, StatusEnum
 
 
-# ---------------------------------------------------------------------------
-# User / auth
-# ---------------------------------------------------------------------------
 class UserCreate(BaseModel):
     email: EmailStr
     password: str = Field(min_length=8, max_length=128)
@@ -27,10 +24,6 @@ class Token(BaseModel):
     access_token: str
     token_type: str = "bearer"
 
-
-# ---------------------------------------------------------------------------
-# Project
-# ---------------------------------------------------------------------------
 class ProjectCreate(BaseModel):
     name: str = Field(min_length=1, max_length=200)
 
@@ -64,10 +57,6 @@ class ProjectMemberAdd(BaseModel):
 class ProjectMemberRoleUpdate(BaseModel):
     role: RoleEnum
 
-
-# ---------------------------------------------------------------------------
-# Task
-# ---------------------------------------------------------------------------
 class TaskCreate(BaseModel):
     title: str = Field(min_length=1, max_length=300)
     description: Optional[str] = None
@@ -98,7 +87,6 @@ class TaskOut(BaseModel):
 
 
 class TaskAssign(BaseModel):
-    # Explicit null means "unassign".
     user_id: Optional[uuid.UUID] = None
 
 

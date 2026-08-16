@@ -24,9 +24,7 @@ def create_project(
 ):
     project = models.Project(name=payload.name, owner_id=current_user.id)
     db.add(project)
-    db.flush()  # assigns project.id without committing yet
-
-    # The creator is automatically an "owner" member of their own project.
+    db.flush()
     db.add(models.ProjectMember(project_id=project.id, user_id=current_user.id, role=models.RoleEnum.owner))
     db.commit()
     db.refresh(project)
@@ -87,10 +85,6 @@ def delete_project(
     db.commit()
     return None
 
-
-# ---------------------------------------------------------------------------
-# Members
-# ---------------------------------------------------------------------------
 @router.post(
     "/{project_id}/members",
     response_model=schemas.ProjectMemberOut,

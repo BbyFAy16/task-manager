@@ -5,7 +5,7 @@ from typing import Optional
 from jose import jwt, JWTError
 from passlib.context import CryptContext
 
-SECRET_KEY = os.getenv("SECRET_KEY", "dev-secret-change-me")
+SECRET_KEY = os.getenv("SECRET_KEY", "ttUQonZEpuLqEOdacJlzB0l3tH7wMPgQh1/WFoGMRtk=")
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = int(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES", "60"))
 

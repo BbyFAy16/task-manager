@@ -3,8 +3,6 @@ from fastapi import FastAPI
 from .database import Base, engine
 from .routers import auth, projects, tasks
 
-# Convenient for local dev / first run; in staging/production, use
-# `alembic upgrade head` (see alembic/) instead of relying on this.
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI(

@@ -1,9 +1,7 @@
 import os
 
-# Must be set before `app.database` is imported anywhere, so every module
-# picks up the same throwaway SQLite file instead of the dev database.
 os.environ.setdefault("DATABASE_URL", "sqlite:///./test.db")
-os.environ.setdefault("SECRET_KEY", "test-secret-key")
+os.environ.setdefault("SECRET_KEY", "ttUQonZEpuLqEOdacJlzB0l3tH7wMPgQh1/WFoGMRtk=")
 
 import pytest
 from fastapi.testclient import TestClient

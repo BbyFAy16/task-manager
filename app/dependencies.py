@@ -9,10 +9,7 @@ from .database import get_db
 from .auth import decode_access_token
 from . import models
 
-# tokenUrl is only used to point Swagger UI's "Authorize" button at the
-# right endpoint; the actual validation happens in decode_access_token.
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/auth/login")
-
 
 def get_current_user(
     token: str = Depends(oauth2_scheme),
